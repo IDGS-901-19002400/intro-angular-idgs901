@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'intro-angular-idgs901';
+
+  alumno = {
+    matricula : 1234,
+    nombre: 'Pedro',
+    edad: 23,
+    fechaNacimiento: new Date(),
+    pago: 128.38
+  };
+
+  calcular(n: number):number{
+
+    return n*2
+
+  }
 }
+
+//interpolacion 
+
