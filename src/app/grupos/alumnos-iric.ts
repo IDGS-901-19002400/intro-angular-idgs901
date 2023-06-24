@@ -5,4 +5,6 @@ export interface IAlumnosIric {
     edad: number;
     correo: string;
     img : string;
+    calificacion: number;
+
 }

@@ -23,26 +23,29 @@ Lista Alumnos IRIC
                     <tr>
                         <th><button (click)="showImg()" class= "btn btn-primary" type="button">{{mostrarImg?'Oculta ' : 'Muestra'}}Imagen</button>
                         </th>
-                        <th>Imagen</th>
+                      <!--   <th>Imagen</th> -->
                         <th>Matricula</th>
                         <th>Nombre</th>
                         <th>Edad</th>
                         <th>Correo</th>
+                        <th>Calificacion {{alumnoTitle}}</th>
                        
                     </tr>
                 </thead>
                 <tbody>
                     <!--  -->
-                    <tr *ngFor="let alumno of alumnosIric">
+                    <tr *ngFor="let alumno of alumnosIric | alumnoFilter:listFilter">
                         <td><img *ngIf="mostrarImg" [src]="alumno.img"
                             [title]="alumno.nombre"
                             [style.width.px]="imagenWidth"
-                            [style.margin.px]="imagenMargin"
-                        ></td>
+                            [style.margin.px]="imagenMargin"></td>
                         <td>{{alumno.matricula}}</td>
-                        <td>{{alumno.nombre}}</td>
+                        <td>{{alumno.nombre | uppercase}}</td>
                         <td>{{alumno.edad}}</td>
                         <td>{{alumno.correo}}</td>
+                        <td>{{alumno.calificacion}}</td>
+                        <td><app-calificacion-alum (calificaClick)="onCalificaClick($event)"
+                            [califica]="alumno.calificacion"></app-calificacion-alum></td>
                        
                     </tr>
                 </tbody>
