@@ -1,0 +1,82 @@
+<h1>Registro Alumnos</h1>
+<div class="row">
+    <div class="col-6">
+        <!-- se hace referencia a la variable que se va a guardar el formulario -->
+        <form (ngSubmit)="onSubmit()" [formGroup]="alumnoForm">
+            <div class="mb-4">
+                <label for="matricula" class="form-label">Matricula</label>
+                <input type="text" class="form-control" required id="matricula" formControlName="matricula" name="matricula">
+                <div *ngIf="alumnoForm.get('matricula')?.touched && 
+                 alumnoForm.get('matricula')?.errors?.['required']" class="alert alert-danger">
+                    La matricula es requerida
+                </div>
+                <div *ngIf="alumnoForm.get('matricula')?.touched && 
+                alumnoForm.get('matricula')?.errors?.['minlength']" class="alert alert-danger">
+                   La matricula debe de ser mas largo que
+                   {{alumnoForm.get('matricula')?.errors?.['minlength']?.requiredLength}}
+               </div>
+            </div>
+            <div class="mb-4">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" required id="nombre" formControlName="nombre" name="nombre">
+                <div *ngIf="alumnoForm.get('nombre')?.touched && 
+                 alumnoForm.get('nombre')?.errors?.['required']" class="alert alert-danger">
+                    El nombre es requerido
+                </div>
+                <div *ngIf="alumnoForm.get('nombre')?.touched && 
+                alumnoForm.get('nombre')?.errors?.['minlength']" class="alert alert-danger">
+                  El nombre debe de ser mas largo que
+                   {{alumnoForm.get('nombre')?.errors?.['minlength']?.requiredLength}}
+               </div>
+            </div>
+            <div class="mb-4">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="text" class="form-control" id="edad" formControlName="edad" name="edad">
+                <div *ngIf="alumnoForm.get('edad')?.touched && 
+                 alumnoForm.get('edad')?.errors?.['required']" class="alert alert-danger">
+                    La edad es requerida
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="correo" class="form-label">Email</label>
+                <input type="text" class="form-control" required id="correo" name="correo">
+                <div *ngIf="alumnoForm.get('correo')?.touched && 
+                 alumnoForm.get('correo')?.errors?.['required']" class="alert alert-danger">
+                    El correo es requerido
+                </div>
+               
+            </div>
+            <div class="mb-4">
+                <label for="foto" class="form-label">Foto</label>
+                <input type="text" class="form-control" id="foto" name="foto" formGroupName="foto">
+            </div>
+            <div class="mb-4">
+                <label for="calif" class="form-label">Calificacion</label>
+                <input type="text" class="form-control" required id="calif" name="calif" formControlName="calif">
+                <div *ngIf="alumnoForm.get('calif')?.touched && 
+                 alumnoForm.get('calif')?.errors?.['required']" class="alert alert-danger">
+                    La calificacion es requerida
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-4 float-end">
+                <button class="btn btn-info btn-lg" type="submit">Guardar</button>
+            </div>
+        </form>
+
+       
+
+    </div>
+    <div class="col-6">
+        <h1>Registros</h1>
+        <!-- mostrar los datos en una tabla que....-->
+       <!--  <table >
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Correo</th>
+
+
+        </table> -->
+
+    </div>
+</div>
